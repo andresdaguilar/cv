@@ -3,6 +3,11 @@ import { Box, styled,  Typography, Container, Divider, Grid, List, ListItem, Lis
 import Header from './Header';
 import { BorderRight, Height } from '@mui/icons-material';
 import CheckIcon from '@mui/icons-material/Check';
+import  HexagonWithImage  from './Photo';
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const skills = [
   "React",
@@ -121,9 +126,13 @@ const ColumnLeft = styled(Box)({
 
 const ColumnRight = styled(Box)({
   flex: "6",
-  padddingLeft: "10px",
+  //padddingLeft: "10px",
   textAlign: "left",
-  padding: "10px",
+  //padding: "10px",
+})
+
+const DividerLeft = styled(Divider)({
+  borderColor: "white"
 })
 
 const TwoColumnLayout = styled(Box)({
@@ -149,12 +158,12 @@ const WorkDetails = (props) => {
   console.log(history)
   return (
     history.map((work, index) => {
+      let backgroundColor = index % 2 === 0 ? "white" : "#eaeaea";
       return (
-       <Box>        
+       <Box sx={{padding: "10px 20px 10px 20px", backgroundColor: backgroundColor}}>        
         <Typography sx={{fontSize: "14px"}}>
          {work.title} <span style={{fontSize: "12px"}}><i>({work.period})</i></span>
-        </Typography>
-       
+        </Typography>       
         <ul>
         {work.description.map((desc, index) => {
           return (
@@ -168,14 +177,7 @@ const WorkDetails = (props) => {
         </ul>
         <Typography sx={{fontSize: "11px"}}>
           <strong>Tech stack: </strong> {work.techStack}
-        </Typography>
-        <br/>
-        {index < history.length - 1 && 
-          <>
-            <Divider/>
-            <br/>
-          </>
-        }
+        </Typography>           
       </Box>
       )
     })
@@ -186,28 +188,29 @@ const WorkDetails = (props) => {
 const Skeleton = () => {
   return (
     <Container>  
-      <Header/> 
+      {/* <Header/>  */}
       <TwoColumnLayout>
         <ColumnLeft style={{fontSize: "12px"}}>
-          
-          <Typography variant="h6">
+          <HexagonWithImage src={"/profile_transparent.png"}/>
+          <Typography variant="h4" sx={{marginTop: "20px", fontSize: "2rem"}}>
+            Andres Aguilar
+          </Typography>
+          <Typography variant="h5" sx={{marginTop: "5px"}}>
+            System Engineer
+          </Typography>
+          <Divider/>
+          <Typography variant="h6" sx={{marginTop: "40px"}}>
             Skills
           </Typography>
           <Typography style={{fontSize: "12px"}}>
           <Grid container>
             <Grid item xs={12}>
               <UL skills={personalSkills}/>                           
-            </Grid>
-            {/* <Grid item xs={6}>
-              <UL skills={personalSkills.slice(0, Math.ceil(personalSkills.length / 2))}/>                           
-            </Grid>
-            <Grid item xs={6}>
-              <UL skills={personalSkills.slice(Math.ceil(personalSkills.length / 2), Math.ceil((personalSkills.length / 2) * 2))} />                    
-            </Grid>           */}
+            </Grid>          
           </Grid>         
           
           </Typography>
-          <Divider/>
+          <DividerLeft/>
           <br/>
           <Typography variant="h6">
             Technical Skills
@@ -225,7 +228,7 @@ const Skeleton = () => {
           </Grid>         
                         
           
-          <Divider/>
+          <DividerLeft/>
           <br/>
           <Typography variant="h6">
             Education
@@ -237,7 +240,7 @@ const Skeleton = () => {
           Universidad Abierta Interamericana, Argentina
           </Typography>
           <br/>
-          <Divider/>
+          <DividerLeft/>
           <br/>
           <Typography variant="h6">
             Languages
@@ -251,22 +254,44 @@ const Skeleton = () => {
           <Typography style={{fontSize: "12px"}}>
             French (Beginner, A1)
           </Typography>
+
+          <br/>
+          <DividerLeft/>
+          <br/>
+
+          <Typography variant="h6">
+            Contact
+          </Typography>
+          <Typography style={{fontSize: "12px"}}>
+            <EmailIcon sx={{ fontSize: 10 }}/> andresd.aguilar@gmail.com
+          </Typography>
+          <Typography style={{fontSize: "12px"}}>
+            <LocalPhoneIcon sx={{ fontSize: 10 }}/> +549 341 3523631
+          </Typography>
+          <Typography style={{fontSize: "12px"}}>
+            <LocationOnIcon sx={{ fontSize: 10 }}/> Argentina
+          </Typography>
+          <Typography style={{fontSize: "12px"}}>
+            <LinkedInIcon sx={{ fontSize: 10 }}/> www.linkedin.com/in/andresaguilar
+          </Typography>
           
           
         </ColumnLeft>
-        <ColumnRight>    
-        <Typography variant="h6">
-            Summary
-          </Typography>
-          <Typography style={{fontSize: "12px", textAlign: "justify", textJustify: "inter-word"}}>
-          Experienced System Engineer with a strong background in management and a passion for development. Proven track record of success working with large enterprises, delivering complex projects on time and within budget. Excellent communication and collaboration skills with cross-functional teams and stakeholders. Always seeking to learn and improve. Confident in making significant contributions to any organization.          
-          </Typography>
-          <br/>
-          <Divider/>
-          <br/>
-        <Typography variant="h6">
+        <ColumnRight>   
+          <div style={{backgroundColor: "#548ca8", color: "white",padding: "20px" }}>
+            <Typography variant="h6">
+              Summary
+            </Typography>
+            <Typography style={{fontSize: "14px", textAlign: "justify", textJustify: "inter-word"}}>
+            Experienced System Engineer with a strong background in management and a passion for development. Proven track record of success working with large enterprises, delivering complex projects on time and within budget. Excellent communication and collaboration skills with cross-functional teams and stakeholders. Always seeking to learn and improve. Confident in making significant contributions to any organization.          
+            </Typography>
+          </div>
+                   
+          <Box sx={{padding: "20px 20px 10px 20px"}}>
+          <Typography variant="h6">
             Work History
           </Typography>    
+          </Box>
           <WorkDetails history={workHistory}/>
         </ColumnRight>
       </TwoColumnLayout>
