@@ -10,11 +10,12 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const HeaderTitle = styled(Box)({
   minHeight: "80px",
-  backgroundColor: "#d6d6dc",
+  backgroundColor: "#548ca8",
   justifyContent: "flex-start",
   textAlign: "left",
   padding: "20px",
   gap: "10px",
+  color: "white"
 });
 
 const Item = styled(Box)({
@@ -38,16 +39,16 @@ const Header = () => {
           </Typography>
         </Grid>
         <Grid item xs={4} sx={{fontSize: "12px", marginTop: "20px"}}>
-          <Typography sx={{fontSize: "12px"}}>
+          <Typography sx={{fontSize: "13px"}}>
             <EmailIcon sx={{ fontSize: 10 }}/> andresd.aguilar@gmail.com
           </Typography>
-          <Typography sx={{fontSize: "12px"}}>
+          <Typography sx={{fontSize: "13px"}}>
             <LocalPhoneIcon sx={{ fontSize: 10 }}/> +549 341 3523631
           </Typography>
-          <Typography sx={{fontSize: "12px"}}>
+          <Typography sx={{fontSize: "13px"}}>
             <LocationOnIcon sx={{ fontSize: 10 }}/> Argentina
           </Typography>
-          <Typography sx={{fontSize: "12px"}}>
+          <Typography sx={{fontSize: "13px"}}>
             <LinkedInIcon sx={{ fontSize: 10 }}/> www.linkedin.com/in/andresaguilar
           </Typography>
         </Grid>

@@ -7,7 +7,12 @@ import CheckIcon from '@mui/icons-material/Check';
 const skills = [
   "React",
   "Node",
+  "Javascript",
   "TypeScript",
+  "NextJS",
+  "NestJS",
+  "Tailwind",
+  "Material UI",
   "Python",
   "C#",
   "AWS",
@@ -23,6 +28,7 @@ const skills = [
 const personalSkills = [
   "Project Management",
   "Software Development",
+  "Full-stack engineer",
   "People Management",
   "Client Management",
   "Team Leadership",
@@ -31,13 +37,13 @@ const personalSkills = [
 
 const workHistory = [
   {
-    period: "March 2029 - Current",
+    period: "March 2019 - Current",
     title: "iMachinary - Director",
     country: "Argentina",
     description: [
       "Responsible for overseeing the strategic direction, performance, and financial plans of the organization.", 
       "Work with the executive team to make critical decisions that impact the company's success and represent the organization to external stakeholders",
-      "Developmen of an internal Portal for vendor management, invoicing, and reporting. Development of a series of Connectors between CMS, CAT Tools and client apps",
+      "Development of Portal for vendor management, invoicing, and reporting. Development of a series of Connectors between CMS, CAT Tools and client apps",
     ],
     techStack: "NodeJS, NextJs, NestJS, React, DynamoDB, Mysql, Lightsail, AWS, Azure, G Cloud, Jira, Git, Scrum, Asana"
   },
@@ -106,14 +112,15 @@ const ColumnLeft = styled(Box)({
   borderRight: "1px solid",
   textAlign: "left",
   padding: "20px",
-  width: "40%",
+  width: "30%",
   height: "1230px",
   borderColor: "rgba(0, 0, 0, 0.12)",
-  backgroundColor: "#cedef2"
+  backgroundColor: "#2b3743",
+  color: "white"
 })
 
 const ColumnRight = styled(Box)({
-  flex: "3",
+  flex: "6",
   padddingLeft: "10px",
   textAlign: "left",
   padding: "10px",
@@ -145,11 +152,9 @@ const WorkDetails = (props) => {
       return (
        <Box>        
         <Typography sx={{fontSize: "14px"}}>
-         {work.title}
+         {work.title} <span style={{fontSize: "12px"}}><i>({work.period})</i></span>
         </Typography>
-        <Typography sx={{fontSize: "11px"}}>
-         {work.period}
-        </Typography>
+       
         <ul>
         {work.description.map((desc, index) => {
           return (
@@ -184,26 +189,21 @@ const Skeleton = () => {
       <Header/> 
       <TwoColumnLayout>
         <ColumnLeft style={{fontSize: "12px"}}>
-          <Typography variant="h6">
-            Summary
-          </Typography>
-          <Typography style={{fontSize: "12px", textAlign: "justify", textJustify: "inter-word"}}>
-          Experienced System Engineer with a strong background in management and a passion for development. Proven track record of success working with large enterprises, delivering complex projects on time and within budget. Excellent communication and collaboration skills with cross-functional teams and stakeholders. Always seeking to learn and improve. Confident in making significant contributions to any organization.          
-          </Typography>
-          <br/>
-          <Divider/>
-          <br/>
+          
           <Typography variant="h6">
             Skills
           </Typography>
           <Typography style={{fontSize: "12px"}}>
           <Grid container>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
+              <UL skills={personalSkills}/>                           
+            </Grid>
+            {/* <Grid item xs={6}>
               <UL skills={personalSkills.slice(0, Math.ceil(personalSkills.length / 2))}/>                           
             </Grid>
             <Grid item xs={6}>
               <UL skills={personalSkills.slice(Math.ceil(personalSkills.length / 2), Math.ceil((personalSkills.length / 2) * 2))} />                    
-            </Grid>          
+            </Grid>           */}
           </Grid>         
           
           </Typography>
@@ -213,15 +213,15 @@ const Skeleton = () => {
             Technical Skills
           </Typography>
           <Grid container>
-            <Grid item xs={4}>
-              <UL skills={skills.slice(0, Math.ceil(skills.length / 3))}/>                           
+            <Grid item xs={6}>
+              <UL skills={skills.slice(0, Math.ceil(skills.length / 2))}/>                           
             </Grid>
-            <Grid item xs={4}>
-              <UL skills={skills.slice(Math.ceil(skills.length / 3), Math.ceil((skills.length / 3) * 2))} />                    
+            <Grid item xs={6}>
+              <UL skills={skills.slice(Math.ceil(skills.length / 2), Math.ceil((skills.length / 2) * 2))} />                    
             </Grid>
-            <Grid item xs={4}>
+            {/* <Grid item xs={4}>
               <UL skills={skills.slice(Math.ceil((skills.length / 3) * 2))} />                                  
-            </Grid>
+            </Grid> */}
           </Grid>         
                         
           
@@ -255,6 +255,15 @@ const Skeleton = () => {
           
         </ColumnLeft>
         <ColumnRight>    
+        <Typography variant="h6">
+            Summary
+          </Typography>
+          <Typography style={{fontSize: "12px", textAlign: "justify", textJustify: "inter-word"}}>
+          Experienced System Engineer with a strong background in management and a passion for development. Proven track record of success working with large enterprises, delivering complex projects on time and within budget. Excellent communication and collaboration skills with cross-functional teams and stakeholders. Always seeking to learn and improve. Confident in making significant contributions to any organization.          
+          </Typography>
+          <br/>
+          <Divider/>
+          <br/>
         <Typography variant="h6">
             Work History
           </Typography>    

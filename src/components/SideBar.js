@@ -6,7 +6,7 @@ import { Box, styled,  Typography } from '@mui/material';
 
 const SideBar = styled(Box)({
   minWidth: "25%",
-  backgroundColor: "grey",
+  backgroundColor: "#2b3743",
   justifyContent: "flex-start",
   gap: "10px",
 });
